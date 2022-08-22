@@ -16,11 +16,16 @@ let randomNumber = getRandomNumber();
 
 tryButton.addEventListener(('click'), () => {
     resultMessage.style.color = 'red';
+    const invalidNumber = input.value < 0 || input.value > 10;
 
 
     if (!input.value) {
         alert('Digite um número de 0 a 10 para continuar');
         return;
+    }
+
+    if (invalidNumber) {
+        alert('Digite um número válido');
     }
 
     if (input.value > randomNumber) {
