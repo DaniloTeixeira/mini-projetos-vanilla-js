@@ -2,8 +2,8 @@ const lamp = document.querySelector('#lamp');
 const toggleButton = document.querySelector('#toggle-button');
 const restoreLampButton = document.querySelector('#restore-button');
 
-const localhost = 'http://127.0.0.1:5500';
 let isBrokenLamp = false;
+const localhost = 'http://127.0.0.1:5500';
 const onButtonSrc = `${localhost}/lamp/images/on-button.jpg`;
 const offLampSrc = `${localhost}/lamp/images/off-lamp.jpg`;
 

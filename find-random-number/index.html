@@ -9,8 +9,8 @@
             integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     </head>
 
-    <body>
-        <div style="background: whitesmoke; height: 500px; width: 700px; border-radius: 15px; border: 1px solid gray;"
+    <body class="d-flex justify-content-center align-items-center" style="height: 100vh; background-color: black;">
+        <div style="background: whitesmoke; height: 500px; width: 700px; border-radius: 30px; border: 5px double #000;"
             class="container d-flex p-5 flex-column align-items-center my-5">
             <h2>Descubra qual é o número escondido?</h2>
             <h3>O número está entre 0 e 10<h2>
@@ -23,12 +23,12 @@
                         <button class="btn btn-lg btn-outline-success me-5" id="yesButton">Sim</button>
                         <button class="btn btn-lg btn-outline-danger" id="noButton">Não</button>
                     </div>
-                    <h1 id="correctNumber" style="margin-top: 50px; font-size: 100px"></h1>
+                    <h1 id="correctNumber" style="margin-top: 50px; font-size: 80px"></h1>
                     <div id="hideDiv" class="d-flex justify-content-center align-items-center"
-                        style="margin-top: 50px; font-size: 100px; width: 100px; height: 100px; background-color: black; border-radius: 10px;">
+                        style="margin-top: 50px; font-size: 100px; width: 100px; height: 100px; background-color: black; border-radius: 50%;">
                         <h1 class="text-light" style="font-size: 80px;">?</h1>
                     </div>
-                    <h2 id="resultMessage"></h2>
+                    <h2 class="mt-1" id="resultMessage"></h2>
         </div>
 
         <script src="script.js"></script>

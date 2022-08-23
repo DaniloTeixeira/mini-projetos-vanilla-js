@@ -13,6 +13,7 @@ function getRandomNumber() {
 }
 
 let randomNumber = getRandomNumber();
+console.log(randomNumber);
 
 tryButton.addEventListener(('click'), () => {
     resultMessage.style.color = 'red';
@@ -52,8 +53,9 @@ yesButton.addEventListener(('click'), () => {
     input.value = '';
     tryButton.classList.remove('disabled');
     resultMessage.innerText = '';
-    randomNumber =
-        getRandomNumber();
+    randomNumber = getRandomNumber();
+    hideDiv.classList.remove('d-none');
+    correctNumber.classList.add('d-none');
 });
 
 noButton.addEventListener(('click'), () => {
