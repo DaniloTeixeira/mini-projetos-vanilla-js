@@ -2,50 +2,79 @@ const lamp = document.querySelector('#lamp');
 const toggleButton = document.querySelector('#toggle-button');
 const restoreLampButton = document.querySelector('#restore-button');
 
-let isBrokenLamp = false;
 const localhost = 'http://127.0.0.1:5500';
 const onButtonSrc = `${localhost}/lamp/images/on-button.jpg`;
-const offLampSrc = `${localhost}/lamp/images/off-lamp.jpg`;
 
-restoreLampButton.classList.add('d-none');
+let isLampBroken = false;
 
-function turnOn() {
-    if (isBrokenLamp) {
-        alert('A lãmpada está quebrada, faça a troca para poder ascendê-la');
+setDisplayNoneOnRestoreButton();
+
+function setDisplayNoneOnRestoreButton() {
+    restoreLampButton.classList.add('d-none');
+}
+
+function removeDisplayNoneOnRestoreButton() {
+    restoreLampButton.classList.remove('d-none');
+}
+
+function setTurnOnButtonSrc() {
+    toggleButton.src = `${localhost}/lamp/images/on-button.jpg`;
+}
+
+function setTurnOffButtonSrc() {
+    toggleButton.src = `${localhost}/lamp/images/off-button.jpg`;
+}
+
+function setTurnOnLampSrc() {
+    lamp.src = `${localhost}/lamp/images/on-lamp.jpg`;
+}
+
+function setTurnOffLampSrc() {
+    lamp.src = `${localhost}/lamp/images/off-lamp.png`;
+}
+
+function setBackgroundBlack() {
+    document.body.style.background = '#000';
+}
+
+function turnOnLamp() {
+    const msg = 'A lãmpada está quebrada, faça a troca para poder ascendê-la';
+
+    if (isLampBroken) {
+        alert(msg);
         return;
     }
 
-    restoreLampButton.classList.add('d-none');
-    toggleButton.src = 'images/on-button.jpg';
-    lamp.src = 'images/on-lamp.jpg';
     document.body.style.background = '#fff';
+    setTurnOnLampSrc();
+    setTurnOnButtonSrc();
+    setDisplayNoneOnRestoreButton();
 }
 
-function turnOff() {
-    toggleButton.src = 'images/off-button.jpg';
-    lamp.src = 'images/off-lamp.png';
-    document.body.style.background = '#000';
+function turnOffLamp() {
+    setTurnOffLampSrc();
+    setBackgroundBlack();
+    setTurnOffButtonSrc();
 }
 
 function toggleButtonSrcImg() {
-    if (toggleButton.src === onButtonSrc) {
-        turnOff();
-        return;
-    }
+    const isTurnOnButton = toggleButton.src === onButtonSrc;
 
-    turnOn();
+    isTurnOnButton ? turnOffLamp() : turnOnLamp();
 }
 
 lamp.addEventListener(('dblclick'), () => {
-    isBrokenLamp = true;
+    isLampBroken = true;
     lamp.src = 'images/broken-lamp.png';
-    toggleButton.src = 'images/off-button.jpg';
-    document.body.style.background = '#000';
-    restoreLampButton.classList.remove('d-none');
+
+    setBackgroundBlack();
+    setTurnOffButtonSrc();
+    removeDisplayNoneOnRestoreButton();
 });
 
 restoreLampButton.addEventListener(('click'), () => {
-    lamp.src = 'images/off-lamp.png';
-    restoreLampButton.classList.add('d-none');
-    isBrokenLamp = false;
+    isLampBroken = false;
+
+    setTurnOffLampSrc();
+    setDisplayNoneOnRestoreButton();
 });
