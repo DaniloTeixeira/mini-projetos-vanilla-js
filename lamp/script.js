@@ -38,7 +38,7 @@ function setBackgroundBlack() {
 }
 
 function turnOnLamp() {
-    const msg = 'A lãmpada está quebrada, faça a troca para poder acendê-la';
+    const msg = 'A lâmpada está quebrada, faça a troca para poder acendê-la';
 
     if (isLampBroken) {
         alert(msg);
