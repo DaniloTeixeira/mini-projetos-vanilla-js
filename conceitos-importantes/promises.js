@@ -32,8 +32,8 @@ fetch('http://api.github.com/users/DaniloTeixeira')
 async function getGithubUser() {
     try {
         const response = await fetch('http://api.github.com/users/DaniloTeixeira');
-        const body = await response.json();
-        console.log(body);
+
+        return await response.json();
 
     } catch (error) {
         console.log(error);
@@ -43,4 +43,4 @@ async function getGithubUser() {
     };
 }
 
-getGithubUser();
+getGithubUser().then(body => console.log(body.name));
